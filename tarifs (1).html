@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifs — Hugo Delaisse Ostéopathe</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --deep-forest: #1a2e1a;
+            --sage-dark: #2d4a2d;
+            --sage: #4a6741;
+            --sage-light: #8a9a7b;
+            --sand: #c4b99a;
+            --warm-white: #faf9f6;
+            --charcoal: #2c2c2c;
+            --stone: #6b6b6b;
+            --terracotta: #c07a5c;
+            --terracotta-light: #d4a594;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--warm-white);
+            color: var(--charcoal);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            background: rgba(250, 249, 246, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(196, 185, 154, 0.2);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--deep-forest);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--terracotta);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--terracotta);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--deep-forest) 0%, var(--sage-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>');
+            background-size: 150px;
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--sand);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            color: var(--warm-white);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--terracotta-light);
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Pricing Section */
+        .pricing-section {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--deep-forest);
+            line-height: 1.2;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--sage);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--warm-white);
+            border-radius: 24px;
+            padding: 3rem;
+            border: 1px solid rgba(196, 185, 154, 0.3);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--sage), var(--terracotta));
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+        }
+
+        .pricing-card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(196, 185, 154, 0.2);
+        }
+
+        .pricing-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--sage), var(--sage-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--warm-white);
+            flex-shrink: 0;
+        }
+
+        .pricing-icon svg {
+            width: 28px;
+            height: 28px;
+        }
+
+        .pricing-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--deep-forest);
+            font-weight: 500;
+        }
+
+        .pricing-card-subtitle {
+            font-size: 0.85rem;
+            color: var(--stone);
+            margin-top: 0.3rem;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pricing-table tr {
+            border-bottom: 1px solid rgba(196, 185, 154, 0.15);
+        }
+
+        .pricing-table tr:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-table td {
+            padding: 1.2rem 0;
+            font-size: 0.95rem;
+        }
+
+        .pricing-table td:first-child {
+            color: var(--charcoal);
+            font-weight: 500;
+        }
+
+        .pricing-table td:last-child {
+            color: var(--sage);
+            font-weight: 600;
+            text-align: right;
+            font-size: 1.1rem;
+        }
+
+        .pricing-note {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: rgba(138, 154, 123, 0.08);
+            border-radius: 12px;
+            font-size: 0.85rem;
+            color: var(--stone);
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+        }
+
+        .pricing-note svg {
+            width: 20px;
+            height: 20px;
+            color: var(--sage);
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* Additional Services */
+        .services-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, var(--deep-forest) 0%, var(--sage-dark) 100%);
+            margin: 0 -2rem;
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--warm-white);
+        }
+
+        .service-card h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--warm-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-card .price {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--sand);
+            margin: 1rem 0;
+        }
+
+        .service-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Info Banner */
+        .info-banner {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 2rem 3rem;
+            background: linear-gradient(135deg, rgba(138, 154, 123, 0.1), rgba(192, 122, 92, 0.1));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border: 1px solid rgba(196, 185, 154, 0.3);
+        }
+
+        .info-banner svg {
+            width: 40px;
+            height: 40px;
+            color: var(--sage);
+            flex-shrink: 0;
+        }
+
+        .info-banner-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--deep-forest);
+            margin-bottom: 0.3rem;
+        }
+
+        .info-banner-content p {
+            font-size: 0.9rem;
+            color: var(--stone);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--deep-forest) 0%, var(--sage-dark) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(192,122,92,0.1) 0%, transparent 50%);
+            animation: rotate 30s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--warm-white);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .cta-title em {
+            font-style: italic;
+            color: var(--terracotta-light);
+        }
+
+        .cta-desc {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 2.5rem;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, var(--terracotta), var(--terracotta-light));
+            color: var(--warm-white);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(192, 122, 92, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--warm-white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
+
+        .footer-links h4 {
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            color: var(--sand);
+        }
+
+        .footer-links a {
+            display: block;
+            color: rgba(255,255,255,0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--terracotta-light);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">Hugo Delaisse</a>
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-link">Accueil</a></li>
+            <li><a href="index.html#about" class="nav-link">À propos</a></li>
+            <li><a href="index.html#avis" class="nav-link">Avis</a></li>
+            <li><a href="index.html#infos" class="nav-link">Consultation</a></li>
+            <li><a href="index.html#deroulement" class="nav-link">Processus</a></li>
+            <li><a href="index.html#practice" class="nav-link">Pratique</a></li>
+            <li><a href="tarifs.html" class="nav-link">Tarifs</a></li>
+            <li><a href="https://www.doctolib.fr/osteopathe/nogent-sur-marne/hugo-delaisse" target="_blank" class="btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.75rem;">Prendre RDV</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-label">Transparence & Clarté</div>
+            <h1 class="hero-title">Tarifs des <em>Prestations</em></h1>
+            <p class="hero-desc">Des tarifs clairs et transparents pour une prise en charge adaptée à vos besoins, en cabinet ou à domicile.</p>
+        <div class="hero-cta-group" style="display: flex; gap: 1rem; justify-content: center; margin-top: 2rem; flex-wrap: wrap;">
+            <a href="https://www.doctolib.fr/osteopathe/nogent-sur-marne/hugo-delaisse" target="_blank" class="btn-primary">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Prendre RDV sur Doctolib
+            </a>
+            <a href="tel:+33743102298" class="btn-primary" style="background: linear-gradient(135deg, var(--sage), var(--sage-dark)); border: 2px solid rgba(255,255,255,0.3);">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                07 43 10 22 98
+            </a>
+        </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="section-header">
+            <div class="section-label">Tarification</div>
+            <h2 class="section-title">Consultations <em>& Prestations</em></h2>
+        </div>
+
+        <div class="pricing-grid">
+            <!-- Cabinet -->
+            <div class="pricing-card">
+                <div class="pricing-card-header">
+                    <div class="pricing-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div>
+                        <div class="pricing-card-title">Au Cabinet</div>
+                        <div class="pricing-card-subtitle">Nogent-sur-Marne & Noisy-le-Grand</div>
+                    </div>
+                </div>
+                <table class="pricing-table">
+                    <tr>
+                        <td>Consultation adulte et enfant (Lundi-Vendredi)</td>
+                        <td>70 €</td>
+                    </tr>
+                    <tr>
+                        <td>Consultation Samedi</td>
+                        <td>80 €</td>
+                    </tr>
+                    <tr>
+                        <td>Consultation Dimanche & Jours fériés</td>
+                        <td>90 €</td>
+                    </tr>
+                    <tr>
+                        <td>Séance d'hypnose</td>
+                        <td>90 €</td>
+                    </tr>
+                    <tr>
+                        <td>Séance complémentaire</td>
+                        <td>70 €</td>
+                    </tr>
+                </table>
+                <div class="pricing-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    <span>Durée moyenne : 50 minutes. Paiement par carte bancaire, espèces ou chèque.</span>
+                </div>
+            </div>
+
+            <!-- Domicile -->
+            <div class="pricing-card">
+                <div class="pricing-card-header">
+                    <div class="pricing-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    </div>
+                    <div>
+                        <div class="pricing-card-title">À Domicile</div>
+                        <div class="pricing-card-subtitle">Toute l'Île-de-France</div>
+                    </div>
+                </div>
+                <table class="pricing-table">
+                    <tr>
+                        <td>Consultation à domicile (standard)</td>
+                        <td>100 €</td>
+                    </tr>
+                    <tr>
+                        <td>Consultation à domicile (zone éloignée)</td>
+                        <td>120 €</td>
+                    </tr>
+                    <tr>
+                        <td>Urgence à domicile (standard)</td>
+                        <td>130 €</td>
+                    </tr>
+                    <tr>
+                        <td>Urgence à domicile (zone éloignée / nuit)</td>
+                        <td>200 €</td>
+                    </tr>
+                </table>
+                <div class="pricing-note">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                    <span>Disponible 7j/7 et 24h/24. Frais de déplacement inclus selon zone géographique.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <div class="info-banner-content">
+                <h4>Remboursement par les mutuelles</h4>
+                <p>Les séances d'ostéopathie sont remboursées par la plupart des mutuelles. Le montant du remboursement varie selon votre contrat (généralement entre 30€ et 70€ par séance). Vérifiez les conditions de votre mutuelle.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Services -->
+    <section class="services-section">
+        <div class="section-header" style="margin-bottom: 3rem;">
+            <div class="section-label" style="color: var(--sand);">Services Complémentaires</div>
+            <h2 class="section-title" style="color: var(--warm-white);">Autres <em>Prestations</em></h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5a2 2 0 1 0 2-2"/><path d="M15.5 15.5a2 2 0 1 0 2-2"/></svg>
+                </div>
+                <h4>Ventouses</h4>
+                <div class="price">70 €</div>
+                <p>Séance de ventouses thérapeutiques pour améliorer la circulation et soulager les tensions.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5a2 2 0 1 0 2-2"/><path d="M15.5 15.5a2 2 0 1 0 2-2"/></svg>
+                </div>
+                <h4>Hypnothérapie</h4>
+                <div class="price">90 €</div>
+                <p>Séance d'hypnose pour la gestion de la douleur, phobies, arrêt du tabac, perte de poids.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <h4>Massage</h4>
+                <div class="price">70 €</div>
+                <p>Séance complémentaire thérapeutiques pour améliorer la circulation et soulager les tensions.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <h4>Bébés & Enfants</h4>
+                <div class="price">70 €</div>
+                <p>Consultation spécialisée pour les nourrissons et enfants, en cabinet uniquement.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Prenez <em>Rendez-vous</em></h2>
+            <p class="cta-desc">Contactez-moi dès maintenant pour planifier votre consultation en cabinet ou à domicile.</p>
+            <div class="cta-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://www.doctolib.fr/osteopathe/nogent-sur-marne/hugo-delaisse" target="_blank" class="btn-primary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Prendre RDV sur Doctolib
+                </a>
+                <a href="tel:+33743102298" class="btn-primary" style="background: linear-gradient(135deg, var(--sage), var(--sage-dark)); border: 2px solid rgba(255,255,255,0.3);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    07 43 10 22 98
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Hugo Delaisse</h3>
+                <p>Ostéopathe D.O. diplômé d'état, spécialisé dans les soins à domicile et l'accompagnement personnalisé de tous vos maux.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a href="index.html">Accueil</a>
+                <a href="index.html#about">À propos</a>
+                <a href="index.html#avis">Avis</a>
+                <a href="index.html#infos">Consultation</a>
+                <a href="index.html#deroulement">Processus</a>
+                <a href="index.html#practice">Pratique</a>
+                <a href="tarifs.html">Tarifs</a>
+            </div>
+            <div class="footer-links">
+                <h4>Services</h4>
+                <a href="index.html#services">Ostéopathie</a>
+                <a href="index.html#services">Hypnose</a>
+                <a href="index.html#services">Massage</a>
+                <a href="index.html#infos">Urgences</a>
+            </div>
+            <div class="footer-links">
+                <h4>Contact</h4>
+                <a href="tel:+33743102298">07 43 10 22 98</a>
+                <a href="mailto:mjhugo.pro.osteo@gmail.com">mjhugo.pro.osteo@gmail.com</a>
+                <a href="index.html#infos">Nogent-sur-Marne</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 Hugo Delaisse. Tous droits réservés.</span>
+            <span>Ostéopathe D.O. diplômé d'état</span>
+        </div>
+    </footer>
+
+</body>
+</html>
