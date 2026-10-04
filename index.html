@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@4.3.3/dist/tailwind.min.css" rel="stylesheet">
     <style>
         :root {
             --sage: #8a9a7b;
@@ -145,28 +146,27 @@
             border-radius: 50%;
         }
 
-        /* ===== NAVIGATION ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 1.2rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(254, 253, 251, 0.95);
-            backdrop-filter: blur(20px);
-            transition: all 0.4s ease;
-            border-bottom: 1px solid transparent;
-        }
-
-        nav.scrolled {
-            border-bottom-color: var(--sand);
-            padding: 0.8rem 4rem;
-            box-shadow: 0 4px 30px rgba(0,0,0,0.06);
-        }
+        <!-- ===== NAVIGATION (Tailwind, no transition) ===== -->
+        <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-white bg-opacity-95 backdrop-blur-lg border-b border-transparent">
+          <div class="flex items-center">
+            <a href="#" class="nav-logo text-2xl font-semibold text-sage-dark mr-4">Hugo Delaisse</a>
+            <button id="nav-toggle" class="md:hidden text-gray-700 focus:outline-none">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+          </div>
+          <ul id="nav-menu" class="hidden md:flex gap-5 list-none">
+            <li><a href="#" class="nav-links">Accueil</a></li>
+            <li><a href="#" class="nav-links">À propos</a></li>
+            <li><a href="#" class="nav-links">Services</a></li>
+            <li><a href="#" class="nav-links">Contact</a></li>
+          </ul>
+        </nav>
+        <script>
+          document.getElementById('nav-toggle').addEventListener('click', function () {
+            const menu = document.getElementById('nav-menu');
+            menu.classList.toggle('hidden');
+          });
+        </script>
 
         .nav-logo {
             font-family: 'Playfair Display', serif;
