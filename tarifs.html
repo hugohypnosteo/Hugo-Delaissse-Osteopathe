@@ -3,74 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarifs — Hugo Delaisse Ostéopathe</title>
-    <!-- Tailwind CDN (no transition) -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@4.3.3/dist/tailwind.min.css" rel="stylesheet">
+    <title>Tarifs — Hugo Delaisse, Ostéopathe D.O.</title>
+    <meta name="description" content="Tarifs des consultations d'ostéopathie de Hugo Delaisse, en cabinet à Nogent-sur-Marne et Noisy-le-Grand ou à domicile.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/pages.css">
 </head>
-<body class="bg-warm-white text-charcoal font-inter">
-    <!-- Navigation (Tailwind, mobile friendly) -->
-    <nav class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-white bg-opacity-95 backdrop-blur-lg border-b border-transparent">
-        <div class="flex items-center">
-            <a href="index.html" class="nav-logo text-2xl font-semibold text-deep-forest mr-4">Hugo Delaisse</a>
-            <button id="nav-toggle" class="md:hidden text-gray-700 focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-        </div>
-        <ul id="nav-menu" class="hidden md:flex gap-5 list-none">
-            <li><a href="index.html" class="nav-links">Accueil</a></li>
-            <li><a href="#" class="nav-links">À propos</a></li>
-            <li><a href="tarifs.html" class="nav-links font-bold">Tarifs</a></li>
-            <li><a href="#" class="nav-links">Contact</a></li>
+<body>
+    <nav class="page-nav">
+        <a href="index.html" class="logo">Hugo Delaisse <span>Ostéopathe</span></a>
+        <ul>
+            <li class="hide-sm"><a href="index.html">Accueil</a></li>
+            <li><a href="tarifs.html" aria-current="page">Tarifs</a></li>
+            <li><a href="https://www.doctolib.fr/osteopathe/nogent-sur-marne/hugo-delaisse" target="_blank" rel="noopener" class="btn">Prendre RDV</a></li>
         </ul>
     </nav>
-    <script>
-        document.getElementById('nav-toggle').addEventListener('click', function () {
-            const menu = document.getElementById('nav-menu');
-            menu.classList.toggle('hidden');
-        });
-    </script>
 
-    <!-- Hero Section -->
-    <section class="hero min-h-[50vh] flex items-center justify-center text-center p-8 md:p-16 bg-gradient-to-r from-deep-forest to-sage-dark relative overflow-hidden">
-        <div class="relative z-10">
-            <p class="text-sand uppercase text-sm mb-4">Tarifs</p>
-            <h1 class="font-playfair text-4xl md:text-5xl text-warm-white mb-4">Mes prestations</h1>
-            <p class="text-warm-white/70 max-w-xl mx-auto">Découvrez les tarifs de mes consultations d'ostéopathie, en cabinet ou à domicile.</p>
-        </div>
-    </section>
+    <header class="page-hero">
+        <div class="label">Tarifs</div>
+        <h1>Mes <em>consultations</em></h1>
+        <p>En cabinet à Nogent-sur-Marne et Noisy-le-Grand, ou à domicile.</p>
+    </header>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section py-12 max-w-5xl mx-auto">
-        <div class="section-header text-center mb-8">
-            <p class="section-label text-terracotta uppercase text-sm mb-2">Tarifs</p>
-            <h2 class="section-title font-playfair text-3xl md:text-4xl text-deep-forest">Consultations</h2>
-        </div>
-        <div class="pricing-grid grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="pricing-card p-6 bg-warm-white rounded shadow">
-                <h3 class="font-bold text-lg mb-2">Cabinet – Lundi à Vendredi</h3>
-                <p class="text-2xl font-semibold text-terracotta">70 €</p>
-                <p class="mt-2 text-sm text-charcoal/70">Durée 45 min</p>
+    <main class="page-main">
+        <div class="price-grid">
+            <div class="card price-card">
+                <h3>Cabinet</h3>
+                <span class="where">Du lundi au vendredi</span>
+                <span class="price">70 €</span>
+                <span class="duration">45 min</span>
             </div>
-            <div class="pricing-card p-6 bg-warm-white rounded shadow">
-                <h3 class="font-bold text-lg mb-2">Cabinet – Samedi / Dimanche / Fériés</h3>
-                <p class="text-2xl font-semibold text-terracotta">80‑90 €</p>
-                <p class="mt-2 text-sm text-charcoal/70">Durée 45 min</p>
+            <div class="card price-card">
+                <h3>Cabinet</h3>
+                <span class="where">Samedi, dimanche et jours fériés</span>
+                <span class="price">80 – 90 €</span>
+                <span class="duration">45 min</span>
             </div>
-            <div class="pricing-card p-6 bg-warm-white rounded shadow">
-                <h3 class="font-bold text-lg mb-2">À domicile</h3>
-                <p class="text-2xl font-semibold text-terracotta">100‑120 €</p>
-                <p class="mt-2 text-sm text-charcoal/70">Durée 60 min</p>
+            <div class="card price-card">
+                <h3>À domicile</h3>
+                <span class="where">Urgences 24h/24 et 7j/7</span>
+                <span class="price">100 – 120 €</span>
+                <span class="duration">60 min</span>
             </div>
-            <div class="pricing-card p-6 bg-warm-white rounded shadow">
-                <h3 class="font-bold text-lg mb-2">Tarif enfant</h3>
-                <p class="text-2xl font-semibold text-terracotta">60 €</p>
-                <p class="mt-2 text-sm text-charcoal/70">Durée 30‑45 min</p>
+            <div class="card price-card">
+                <h3>Enfant</h3>
+                <span class="where">Bébés et enfants</span>
+                <span class="price">60 €</span>
+                <span class="duration">30 – 45 min</span>
             </div>
         </div>
-    </section>
 
-    <footer class="bg-deep-forest text-warm-white py-4 text-center">
-        <p>&copy; 2026 Hugo Delaisse – Tous droits réservés.</p>
+        <p class="note">
+            Les séances d'ostéopathie ne sont pas remboursées par l'Assurance maladie, mais de nombreuses
+            mutuelles en prennent une partie en charge. Une facture vous est remise à chaque consultation.
+        </p>
+
+        <div class="center">
+            <a href="https://www.doctolib.fr/osteopathe/nogent-sur-marne/hugo-delaisse" target="_blank" rel="noopener" class="btn">Réserver sur Doctolib</a>
+        </div>
+    </main>
+
+    <footer class="page-footer">
+        <p>© 2026 Hugo Delaisse
+            <a href="index.html">Accueil</a>
+            <a href="reglementation.html">Réglementation &amp; mentions légales</a>
+        </p>
     </footer>
 </body>
 </html>

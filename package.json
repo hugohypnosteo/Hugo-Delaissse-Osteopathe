@@ -1,28 +1,15 @@
 {
   "name": "site-hugo-delaisse",
-  "version": "1.0.0",
-  "description": "Site web professionnel pour Hugo Delaisse, ostéopathe à domicile",
-  "main": "index.js",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Site web professionnel pour Hugo Delaisse, ostéopathe D.O. en cabinet et à domicile",
   "scripts": {
-    "build:css": "npx tailwindcss -i ./src/input.css -o ./static/css/tailwind.css --minify",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "preview": "npx --yes serve ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lucaspmarie-a11y/site-hugo-delaisse.git",
+    "url": "git+https://github.com/lucaspmarie-a11y/site-hugo-delaisse.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/lucaspmarie-a11y/site-hugo-delaisse/issues"
-  },
-  "homepage": "https://github.com/lucaspmarie-a11y/site-hugo-delaisse#readme",
-  "devDependencies": {
-    "autoprefixer": "^10.6.1",
-    "postcss": "^8.5.28",
-    "postcss-cli": "^12.0.0",
-    "tailwindcss": "^4.3.3"
-  }
+  "homepage": "https://lucaspmarie-a11y.github.io/site-hugo-delaisse/",
+  "license": "UNLICENSED"
 }
