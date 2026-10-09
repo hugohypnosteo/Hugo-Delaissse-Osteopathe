@@ -1507,6 +1507,81 @@
             .info-card { padding: 1.6rem 1.3rem; }
         }
         html, body { overflow-x: clip; }
+
+        /* ===== AVATAR HERO (remplace le rond fixe qui chevauchait le titre) ===== */
+        .nowrap { white-space: nowrap; }
+        .pattern-1 { display: none; }
+        .hero-avatar {
+            display: block;
+            width: 104px;
+            height: 104px;
+            margin-bottom: 1.5rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--warm-white);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+        }
+
+        /* ===== MOBILE / TABLETTE ===== */
+
+        @media (max-width: 1200px) {
+            .hero-avatar { width: 120px; height: 120px; margin: 0 auto 1.5rem; }
+            .hero { min-height: auto; }
+            .hero-label { justify-content: center; }
+        }
+
+        @media (max-width: 768px) {
+            .reviews, .cta-section, .about, .practice { padding: 4rem 1.25rem; }
+            .hero-container { padding: 6.5rem 1.25rem 3rem; gap: 2rem; }
+            .hero-title { font-size: clamp(2.3rem, 10vw, 3rem); }
+            .hero-subtitle { font-size: 1rem; }
+            .hero-label { font-size: 0.72rem; letter-spacing: 2px; }
+            .hero-label::before { display: none; }
+            .hero-badges {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+                margin-bottom: 2rem;
+            }
+            .hero-badge { padding: 0.8rem 1rem; text-align: center; }
+            .hero-badge:last-child { grid-column: 1 / -1; }
+            .hero-cta-group { flex-direction: column; gap: 1.2rem; }
+            .hero-cta-group .btn-primary { width: 100%; justify-content: center; }
+            .btn-primary, .btn-secondary, .cta-phone { white-space: nowrap; }
+            .btn-secondary { display: inline-block; padding: 0.8rem 0 0.4rem; }
+            .cta-email { display: inline-block; padding: 0.7rem 0; }
+
+            .about-grid { gap: 3.5rem; }
+            .about-img { height: 380px; }
+            .about-experience { right: 12px; bottom: -22px; padding: 1.2rem 1.6rem; }
+
+            .section-title { font-size: clamp(1.8rem, 8vw, 2.4rem); }
+
+            .google-rating-summary { flex-wrap: wrap; gap: 0.8rem 1.2rem; }
+            .review-write-btn a { padding: 0.9rem 1.6rem !important; white-space: nowrap; }
+            .review-card { padding: 1.6rem; }
+            .reviews-dots { display: none; }
+            .reviews-nav { gap: 1.5rem; }
+
+            .gallery-grid { margin-top: 2rem; }
+
+            .cta-phone { padding: 1rem 1.6rem; font-size: 1rem; }
+            .cta-section h2 { font-size: clamp(2rem, 9vw, 2.6rem); }
+            .tarifs-cta a { padding: 1rem 1.8rem !important; }
+
+            footer { padding-left: 1.25rem; padding-right: 1.25rem; }
+            .footer-bottom { flex-direction: column; gap: 0.6rem; text-align: center; }
+            .footer-links:last-child { grid-column: 1 / -1; }
+        }
+
+        @media (max-width: 380px) {
+            #navbar { gap: 0.5rem; padding-left: 1rem; padding-right: 1rem; }
+            .nav-logo { font-size: 1.1rem; }
+            .hero-title { font-size: 2.1rem; }
+            .hero-badges { grid-template-columns: 1fr; }
+            .hero-badge:last-child { grid-column: auto; }
+            .btn-primary, .cta-phone { font-size: 0.8rem; letter-spacing: 1px; }
+        }
         .footer-bottom a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
     </style>
 </head>
@@ -1544,8 +1619,9 @@
     <section class="hero">
         <div class="hero-container">
             <div class="hero-text">
+                <img class="hero-avatar" src="images/portrait-rond.jpg" alt="Hugo Delaisse, ostéopathe" width="120" height="120">
                 <div class="hero-label">Ostéopathie en cabinet &amp; à domicile</div>
-                <h1 class="hero-title">Votre bien-être,<br><em>ma priorité.</em></h1>
+                <h1 class="hero-title">Votre <span class="nowrap">bien-être</span>,<br><em>ma priorité.</em></h1>
                 <p class="hero-subtitle">
                     Ostéopathe D.O. diplômé de l'Institut Dauphine d'Ostéopathie (IDO), installé à Nogent-sur-Marne et Noisy-le-Grand. J'accompagne bébés, enfants, adultes, sportifs, en cabinet et à domicile.
                 </p>
