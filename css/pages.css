@@ -136,6 +136,7 @@ a { color: var(--sage-dark); }
     gap: 1.5rem;
 }
 .price-card { display: flex; flex-direction: column; gap: 0.3rem; }
+.price-card--wide { grid-column: 1 / -1; }
 .price-card h3 {
     font-family: 'Playfair Display', serif;
     font-weight: 600;
